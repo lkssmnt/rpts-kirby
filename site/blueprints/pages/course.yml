@@ -1,0 +1,17 @@
+sections:
+  content:
+    type: fields
+    fields:
+      gallery:
+        type: files
+      text:
+        type: textarea
+      leitung:
+        type: pages
+        label: Leitung
+      teilnehmende:
+        type: pages
+        label: Teilnehmende
+      ausstellungen:
+        type: pages
+        label: Ausstellungen

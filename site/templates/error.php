@@ -1,0 +1,1 @@
+<h1>Whoops, this page wasn’t found! Lets go back <a href="/">home??</a></h1>

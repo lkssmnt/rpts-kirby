@@ -1,0 +1,23 @@
+sections:
+  content:
+    type: fields
+    fields:
+      author:
+        type: pages
+        label: Author
+      gallery:
+        type: files
+      text:
+        type: textarea
+      course:
+        type: pages
+        label: Course
+      technology:
+        type: text
+      awards:
+        type: text
+      genre:
+        type: tags
+      supervision:
+        type: pages
+        label: Supervision

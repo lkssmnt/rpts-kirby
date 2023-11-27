@@ -1,0 +1,5 @@
+fields:
+  instagram:
+    type: text
+  email:
+    type: text
