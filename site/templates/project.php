@@ -1,28 +1,33 @@
+
+
 <?php snippet("head") ?>
+<?php snippet("nav") ?>
 
-<h1><?= $page->title() ?></h1>
+<main id="swup" class="project-container transition-fade"> 
+  <h1><?= $page->title() ?></h1>
 
-<div class="images">
-  <?php foreach ($page->gallery()->toFiles() as $image) : ?>
-    <img src="<?= $image->url() ?>" srcset="<?= $image->srcset("projectImages") ?>">
-  <?php endforeach ?>
-</div>
+  <div class="images">
+    <?php foreach ($page->gallery()->toFiles() as $image) : ?>
+      <img src="<?= $image->url() ?>" srcset="<?= $image->srcset("projectImages") ?>">
+    <?php endforeach ?>
+  </div>
 
-<p>Autor:innen:</p>
-<ul>
-  <?php foreach ($page->author()->toPages() as $author) : ?>
-    <li><?= $author->title() ?></li>
-  <?php endforeach ?>
-</ul>
+  <p>Autor:innen:</p>
+  <ul>
+    <?php foreach ($page->author()->toPages() as $author) : ?>
+      <li><?= $author->title() ?></li>
+    <?php endforeach ?>
+  </ul>
 
-<hr>
+  <hr>
 
-<?php if ($page->technology()->isNotEmpty()) : ?>
-  <p>Technologie: <?= $page->technology(); ?></p>
-<?php endif ?>
+  <?php if ($page->technology()->isNotEmpty()) : ?>
+    <p>Technologie: <?= $page->technology(); ?></p>
+  <?php endif ?>
 
-<div class="text">
-  <?= $page->text()->kirbytext() ?>
-</div>
+  <div class="text">
+    <?= $page->text()->kirbytext() ?>
+  </div>
+</main>
 
 <?php snippet("foot") ?>
