@@ -18,6 +18,12 @@ sections:
         type: text
       genre:
         type: tags
+      vimeoIDs:
+        type: structure
+        fields:
+          vimeoID:
+            type: text
+            label: Vimeo ID
       supervision:
         type: pages
         label: Supervision
