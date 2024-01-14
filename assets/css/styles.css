@@ -1,0 +1,111 @@
+* {
+  color: red;
+}
+
+img {
+  max-width: 300px;
+}
+
+.hover-image {
+  position: absolute;
+  pointer-events: none;
+}
+
+.author-info {
+  position: fixed;
+  bottom: 0;
+  right: 1rem;
+  font-size: 200px;
+  mix-blend-mode: difference;
+  pointer-events: none;
+}
+
+.collection-wrapper {
+  margin-top: 2rem;
+}
+
+.collection-wrapper:has(.collection-row) {
+  border-top: 1px solid red;
+}
+
+.collection-row {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid red;
+  padding: 1rem;
+}
+
+/* PRINT */
+
+#header-pagedjs {
+  display: none;
+}
+
+body.print #header-pagedjs{
+  display: block;
+}
+
+/* body {
+  counter-reset: chapterNumber;
+}
+
+@page {
+  size: A5;
+  margin-top: 10mm;
+  margin-right: 20mm;
+  margin-bottom: 25mm;
+  margin-left: 15mm;
+
+  bleed: 6mm;
+  marks: crop;
+}
+
+@page:left{
+  margin-left: 25mm;
+  margin-right: 10mm;
+}
+
+@page:right{
+  margin-left: 10mm;
+  margin-right: 25mm;
+}
+
+.chapter {
+  break-before: right;
+  margin-top: 50mm;
+  counter-increment: chapterNumber;
+}
+
+.chapter > h1 {
+  display: inline;
+}
+
+.chapter::before {
+  content: "Chapter " counter(chapterNumber) ": ";
+}
+
+@page {
+  @bottom-right { content: counter(page); }
+
+}
+
+@page:right {
+  @top-right-corner { content: 'test'; }
+}
+
+
+.running-title {
+  position: running(runningTitle);
+}
+
+@media screen {
+  .running-title {
+    display: none;
+  }
+}
+
+@page {
+  @bottom-center {
+    content: element(runningTitle);
+  }
+} */

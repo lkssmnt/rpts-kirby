@@ -11,7 +11,7 @@
 
 <ul>
   <?php
-  $allProjects = $site->find("projects")->children();
+  $allProjects = $site->find("projekte")->children();
 
   $filteredProjects = $allProjects->filter(
     fn ($projectPage) => $projectPage->author()->toPages()->has($page)

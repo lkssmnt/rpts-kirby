@@ -1,0 +1,95 @@
+@media print {
+
+    /* Size and marin for all pages ------------- */
+    @page {
+        size: A4;
+        margin-top: 5mm;
+        margin-bottom: 10mm;
+        font-family: "Times";
+    }  
+
+
+    /* LEFT PAGES -------------------------------- */
+
+    @page:left {
+        margin-left: 6mm;
+        margin-right: 6mm;
+        @left-top {
+            content: counter(page);
+            width: auto;
+        }
+        @bottom-center{
+            text-align: left;
+        }
+    }
+
+
+    /* RIGHT PAGES -------------------------------- */
+
+    @page:right {
+        margin-left: 6mm;
+        margin-right: 6mm;
+        @right-top {
+            content: counter(page);
+            width: auto;
+        }
+        @bottom-center{
+            text-align: right;
+        }
+    }
+
+
+
+    /* BLANK PAGES -------------------------------- */
+
+    @page:blank {
+        @left-top { content: none; }
+        @bottom-center { content: none; }
+        @right-top { content: none; }
+    }
+
+
+
+    /* COVER ------------------------------------- */
+
+    @page:first{
+        @right-top { content: none; }
+    }
+
+    
+    
+    /* SECTION BREAKS -------------------------------- */
+
+    .projekt-wrapper {
+        break-after: page;
+    }
+
+
+
+    /* CONTENT --------------------------------------- */
+
+    nav {
+        display: none;
+    }
+
+    .add-to-collection-btn {
+        display: none;
+    }
+
+    .collection-wrapper {
+        display: none;
+    }
+
+
+    h1 {
+        font-size: 16pt;
+        line-height: 0.9;
+        margin-bottom: 1mm;
+    }
+
+    img {
+        width: 20mm;
+    }
+}
+
+
