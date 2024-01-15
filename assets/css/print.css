@@ -64,6 +64,10 @@
         break-after: page;
     }
 
+    h1 {
+        break-before: page;
+    }
+
 
 
     /* CONTENT --------------------------------------- */

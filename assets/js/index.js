@@ -48,14 +48,23 @@ window.addEventListener("DOMContentLoaded", () => {
   // Events for Preview/Screen/Print UI
   document.querySelector("#button-print-preview").addEventListener(
     "click",
-    function () {
-      printPreview(filterThis, fetchThis);
-    },
+    () =>
+      function () {
+        printPreview(filterThis, fetchThis);
+      },
     false
   );
+
+  document
+    .querySelector("#button-print-preview")
+    .addEventListener("click", () => {
+      printPreview(filterThis, fetchThis);
+    });
+
   document
     .querySelector("#button-screen")
     .addEventListener("click", screenReload);
+
   document.querySelector("#button-print").addEventListener(
     "click",
     function () {
@@ -86,17 +95,17 @@ function preparePrintInterface() {
   // 2. Move content into #content + build printing UI
   document.body.innerHTML = `
     <header id="header-pagedjs">
-        <div id="header-container">
-            <button id="button-screen"  class="hide"> Show on screen</button>
-            <button id="button-print-preview" >Make book</button>
-            <button id="button-print"  class="hide">Print!</button>
-        </div>
+      <div id="header-container">
+        <button id="button-screen" class="hide"> Show on screen</button>
+        <button id="button-print-preview">Make book</button>
+        <button id="button-print" class="hide">Print!</button>
+      </div>
     </header>
     <div id="renderbook"></div>
     <div id="content">
-        <div class="content-wrapper">
-            ${content}
-        </div>
+      <div class="content-wrapper">
+        ${content}
+      </div>
     </div>\'`;
 }
 
