@@ -4,8 +4,13 @@
     @page {
         size: A4;
         margin-top: 5mm;
-        margin-bottom: 10mm;
+        margin-bottom: 20mm;
         font-family: "Times";
+
+        @bottom-center{
+            text-align: center;
+            content: counter(page);
+        }
     }  
 
 
@@ -14,13 +19,6 @@
     @page:left {
         margin-left: 6mm;
         margin-right: 6mm;
-        @left-top {
-            content: counter(page);
-            width: auto;
-        }
-        @bottom-center{
-            text-align: left;
-        }
     }
 
 
@@ -29,13 +27,6 @@
     @page:right {
         margin-left: 6mm;
         margin-right: 6mm;
-        @right-top {
-            content: counter(page);
-            width: auto;
-        }
-        @bottom-center{
-            text-align: right;
-        }
     }
 
 
