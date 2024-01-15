@@ -7,43 +7,6 @@ var printFlag = false;
 
 window.addEventListener("DOMContentLoaded", () => {
   preparePrintInterface();
-
-  if (document.querySelector(".add-to-collection-btn")) {
-    const addToCollectionBtn = document.querySelector(".add-to-collection-btn");
-    addToCollectionBtn.addEventListener("click", () => {
-      const slug = addToCollectionBtn.dataset.slug;
-      const title = addToCollectionBtn.dataset.title;
-      const parent = addToCollectionBtn.dataset.parent;
-
-      // get collection from local storage or create new empty collection
-      const collection = JSON.parse(localStorage.getItem("collection")) || [];
-
-      // if already in collection, return
-      if (collection.find((page) => page.slug === slug)) {
-        console.log("page already in collection");
-        return;
-      }
-
-      // else add to collection
-      collection.push({ slug, title, parent });
-      localStorage.setItem("collection", JSON.stringify(collection));
-    });
-  }
-
-  if (document.querySelector(".collection-wrapper")) {
-    fetchThis = [];
-
-    if (localStorage.getItem("collection")) {
-      const collection = JSON.parse(localStorage.getItem("collection")) || [];
-      const collectionWrapper = document.querySelector(".collection-wrapper");
-
-      fetchThis = collection.map((page) => {
-        return [`${page.slug}`, ".content-wrapper"];
-      });
-
-      displayCollection(collection, collectionWrapper);
-    }
-  }
 });
 
 function preparePrintInterface() {
@@ -65,7 +28,7 @@ function preparePrintInterface() {
       <div class="content-wrapper">
         ${content}
       </div>
-    </div>\'`;
+    </div>`;
 
   document
     .querySelector("#button-print-preview")
@@ -86,45 +49,17 @@ function preparePrintInterface() {
   );
 }
 
-function displayCollection(collection, collectionWrapper) {
-  collection.forEach((page) => {
-    const project = document.createElement("div");
-    project.classList.add("project");
-    project.innerHTML = `
-            <a href="${page.slug}" data-slug="${page.slug}" class="collection-row">
-                <p>${page.title}</p>
-                <p>${page.parent}</p>
-                <p class="remove-btn">Remove from Collection</p>
-            </a>
-        `;
-    3;
-    collectionWrapper.appendChild(project);
-  });
-
-  const removeBtns = document.querySelectorAll(".remove-btn");
-  removeBtns.forEach((btn) => {
-    btn.addEventListener("click", (event) => {
-      event.preventDefault();
-      const slug = btn.parentElement.dataset.slug;
-      const collection = JSON.parse(localStorage.getItem("collection")) || [];
-      console.log(slug);
-      const newCollection = collection.filter((page) => page.slug !== slug);
-      console.log(newCollection);
-      localStorage.setItem("collection", JSON.stringify(newCollection));
-      btn.parentElement.parentElement.remove();
-    });
-  });
-}
-
 //Preview book layout, make sure to include CSS files for the interface, select content by providing a query selector, falls back to #content
 async function printPreview(filterTag, contentToFetch) {
   let inputPrint = document.getElementById("input-print");
 
+  // disable screen styles
   if (document.getElementById("style-screen")) {
     document
       .getElementById("style-screen")
       .setAttribute("disabled", "disabled");
   }
+
   let bookcontent = document.querySelector("#content");
   let content = bookcontent.innerHTML;
   if (filterTag) {
@@ -133,7 +68,6 @@ async function printPreview(filterTag, contentToFetch) {
     content = filteredBookcontent.outerHTML;
   }
   if (contentToFetch) {
-    console.log("content to fetch");
     for (var i = 0; i < contentToFetch.length; i++) {
       content += await fetcher(contentToFetch[i][0], contentToFetch[i][1]);
     }
