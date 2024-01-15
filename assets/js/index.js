@@ -72,19 +72,6 @@ window.addEventListener("DOMContentLoaded", () => {
     },
     false
   );
-
-  // Prevent standard print action from launching @CMD+P
-  document.addEventListener(
-    "keydown",
-    function (e) {
-      if (e.metaKey && e.keyCode == 80) {
-        e.preventDefault();
-        printFlag = true;
-        printPdf();
-      }
-    },
-    false
-  );
 });
 
 function preparePrintInterface() {
