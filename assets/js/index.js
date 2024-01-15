@@ -44,34 +44,6 @@ window.addEventListener("DOMContentLoaded", () => {
       displayCollection(collection, collectionWrapper);
     }
   }
-
-  // Events for Preview/Screen/Print UI
-  document.querySelector("#button-print-preview").addEventListener(
-    "click",
-    () =>
-      function () {
-        printPreview(filterThis, fetchThis);
-      },
-    false
-  );
-
-  document
-    .querySelector("#button-print-preview")
-    .addEventListener("click", () => {
-      printPreview(filterThis, fetchThis);
-    });
-
-  document
-    .querySelector("#button-screen")
-    .addEventListener("click", screenReload);
-
-  document.querySelector("#button-print").addEventListener(
-    "click",
-    function () {
-      printPdf();
-    },
-    false
-  );
 });
 
 function preparePrintInterface() {
@@ -94,6 +66,24 @@ function preparePrintInterface() {
         ${content}
       </div>
     </div>\'`;
+
+  document
+    .querySelector("#button-print-preview")
+    .addEventListener("click", () => {
+      printPreview(filterThis, fetchThis);
+    });
+
+  document
+    .querySelector("#button-screen")
+    .addEventListener("click", screenReload);
+
+  document.querySelector("#button-print").addEventListener(
+    "click",
+    function () {
+      printPdf();
+    },
+    false
+  );
 }
 
 function displayCollection(collection, collectionWrapper) {
@@ -127,7 +117,6 @@ function displayCollection(collection, collectionWrapper) {
 }
 
 //Preview book layout, make sure to include CSS files for the interface, select content by providing a query selector, falls back to #content
-
 async function printPreview(filterTag, contentToFetch) {
   let inputPrint = document.getElementById("input-print");
 
@@ -179,13 +168,11 @@ async function printPreview(filterTag, contentToFetch) {
 }
 
 // Switch to screen design aka reset page
-
 function screenReload() {
   window.location.reload(false);
 }
 
 // Print action, if you are in Preview --> Print, if you are in screen modee --> preview --> print
-
 async function printPdf() {
   if (
     document.querySelector("#button-print-preview").classList.contains("hide")
@@ -197,7 +184,6 @@ async function printPdf() {
 }
 
 // A content fetcher function to asynchronously load html files on the same server i.e. create book from multiple pages
-
 async function fetcher(contentPath, filterTag) {
   console.log(contentPath);
   const output = fetch(contentPath)
@@ -224,26 +210,3 @@ async function fetcher(contentPath, filterTag) {
     });
   return output;
 }
-
-// if (
-//   document.querySelector(".author-info") &&
-//   document.querySelector(".hover-image")
-// ) {
-//   const authorInfo = document.querySelector(".author-info");
-//   const hoverImage = document.querySelector(".hover-image");
-//   window.addEventListener("mousemove", (e) => {
-//     hoverImage.style.left = e.pageX + "px";
-//     hoverImage.style.top = e.pageY + "px";
-//   });
-
-//   const projectLinks = document.querySelectorAll("li");
-//   projectLinks.forEach((link) => {
-//     link.addEventListener("mouseenter", (event) => {
-//       const imageUrl = event.target.dataset.imageurl;
-//       hoverImage.src = imageUrl;
-
-//       const author = event.target.dataset.author;
-//       authorInfo.innerHTML = author;
-//     });
-//   });
-// }
