@@ -1,0 +1,122 @@
+
+
+@media print {
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: geometricPrecision;
+      }
+
+    /* Size and marin for all pages ------------- */
+    @page {
+        size: A5;
+        margin-top: 15mm;
+        margin-bottom: 20mm;
+        font-family: "Times";
+
+        @bottom-center{
+            text-align: center;
+            content: counter(page);
+            font-family: monospace;
+        }
+
+        @top-center {
+            content: string(title);
+            font-family: monospace;
+        }
+    }  
+
+
+    /* LEFT PAGES -------------------------------- */
+
+    @page:left {
+        margin-left: 15mm;
+        margin-right: 10mm;
+    }
+
+
+    /* RIGHT PAGES -------------------------------- */
+
+    @page:right {
+        margin-left: 10mm;
+        margin-right: 15mm;
+    }
+
+
+
+    /* BLANK PAGES -------------------------------- */
+
+    @page:blank {
+        @left-top { content: none; }
+        @bottom-center { content: none; }
+        @right-top { content: none; }
+        @bottom-left { content: none; }
+    }
+
+
+
+    /* COVER ------------------------------------- */
+
+    @page:first{
+        @right-top { content: none; }
+    }
+
+    
+    
+    /* SECTION BREAKS -------------------------------- */
+
+    .projekt-wrapper {
+        break-after: page;
+    }
+
+    h1 {
+        break-before: right;
+    }
+
+
+
+    /* CONTENT --------------------------------------- */
+
+    nav {
+        display: none;
+    }
+
+    .add-to-collection-btn {
+        display: none;
+    }
+
+    .collection-wrapper {
+        display: none;
+    }
+
+
+    h1 {
+        font-size: 16pt;
+        line-height: 0.9;
+        margin-bottom: 10mm;
+        margin-top: 50mm;
+        string-set: title content(text);
+        font-weight: 400;
+        font-size: 24pt;
+    }
+
+    img {
+        width: 20mm;
+    }
+
+    p {
+        text-align: justify;
+        hyphens: auto;
+        margin: 0;        
+    }
+
+    p+p {
+        text-indent: 2rem;
+    }
+}
+
+

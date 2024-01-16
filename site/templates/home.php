@@ -1,7 +1,7 @@
 <?php snippet("head") ?>
 
 <?php
-$projects = $site->find("projects")->children();
+$projects = $site->find("projekte")->children();
 ?>
 
 <h1><?= $site->title() ?></h1>
