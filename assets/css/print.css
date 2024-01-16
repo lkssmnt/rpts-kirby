@@ -55,6 +55,7 @@
         @bottom-center { content: none; }
         @right-top { content: none; }
         @bottom-left { content: none; }
+        @top-center { content: none; }
     }
 
 
