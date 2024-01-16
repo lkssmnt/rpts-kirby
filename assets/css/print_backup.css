@@ -1,30 +1,18 @@
-
-
 @media print {
-
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        text-rendering: geometricPrecision;
-      }
 
     /* Size and marin for all pages ------------- */
     @page {
-        size: A5;
-        margin-top: 15mm;
+        size: A4;
+        margin-top: 5mm;
         margin-bottom: 20mm;
         font-family: "Times";
 
         @bottom-center{
             text-align: center;
             content: counter(page);
-            font-family: monospace;
         }
 
-        @top-center {
+        @bottom-left {
             content: string(title);
             font-family: monospace;
         }
@@ -34,16 +22,16 @@
     /* LEFT PAGES -------------------------------- */
 
     @page:left {
-        margin-left: 15mm;
-        margin-right: 10mm;
+        margin-left: 6mm;
+        margin-right: 6mm;
     }
 
 
     /* RIGHT PAGES -------------------------------- */
 
     @page:right {
-        margin-left: 10mm;
-        margin-right: 15mm;
+        margin-left: 6mm;
+        margin-right: 6mm;
     }
 
 
@@ -97,25 +85,12 @@
     h1 {
         font-size: 16pt;
         line-height: 0.9;
-        margin-bottom: 10mm;
-        margin-top: 50mm;
+        margin-bottom: 1mm;
         string-set: title content(text);
-        font-weight: 400;
-        font-size: 24pt;
     }
 
     img {
         width: 20mm;
-    }
-
-    p {
-        text-align: justify;
-        hyphens: auto;
-        margin: 0;        
-    }
-
-    p+p {
-        text-indent: 2rem;
     }
 }
 

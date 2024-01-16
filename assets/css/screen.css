@@ -37,13 +37,30 @@ img {
 
 /* PRINT */
 
-#header-pagedjs {
+/* #header-pagedjs {
   display: none;
 }
 
 body.print #header-pagedjs{
   display: block;
+} */
+
+
+
+.collection--item {
+  display: block;
+  padding: 1rem;
+  border-bottom: 1px solid red;
+
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
 }
+
+.remove-btn {
+  text-align: right;
+}
+
+
 
 /* body {
   counter-reset: chapterNumber;

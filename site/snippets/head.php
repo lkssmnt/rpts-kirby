@@ -8,7 +8,12 @@
 
   <link href="/assets/css/reset.css" rel="stylesheet" type="text/css">
   <link href="/assets/css/pagedjs.css" rel="stylesheet" type="text/css">
-  <link id="style-screen" href="/assets/css/styles.css" rel="stylesheet" type="text/css">
+  <link id="style-screen" href="/assets/css/screen.css" rel="stylesheet" type="text/css">
 </head>
 
 <body class="<?php if($page->is("home") || $page->is("collection") || $page->is("book")) echo "print" ?>">
+
+<nav>
+  <a href="<?= $site->url() ?>">Home</a>
+  <a href="<?= url("collection") ?>">Collection</a>
+</nav>

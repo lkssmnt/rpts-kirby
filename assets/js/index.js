@@ -1,13 +1,95 @@
 import { Previewer, Handler } from "../js/paged.esm.js";
 
 let fetchThis = [];
-var filterThis;
-
-var printFlag = false;
+let filterThis;
+let printFlag = false;
 
 window.addEventListener("DOMContentLoaded", () => {
-  preparePrintInterface();
+
+  if(document.querySelector("body.print")) {
+    preparePrintInterface();
+  }
+
+
+  // runs if on post page
+  if(document.querySelector("#add-to-collection-btn")) {
+    preparePrintInterface();
+    const addToCollectionBtn = document.querySelector("#add-to-collection-btn");
+    addToCollectionBtn.addEventListener("click", () => {
+      const slug = addToCollectionBtn.dataset.slug;
+
+      const post = {
+        slug: addToCollectionBtn.dataset.slug,
+        title: addToCollectionBtn.dataset.title,
+        parent: addToCollectionBtn.dataset.parent,
+      }
+
+      const collection = JSON.parse(localStorage.getItem("collection")) || [];
+
+      // // if already in collection, return
+      if (collection.find((post) => post.slug === slug)) {
+        console.log("post already in collection");
+        return;
+      }
+
+      collection.push(post);
+      localStorage.setItem("collection", JSON.stringify(collection));
+
+      console.log(collection);
+    })
+  }
+
+  // runs if on collection page
+  if(document.querySelector(".collection-wrapper")) {
+    preparePrintInterface();
+    const collectionWrapper = document.querySelector(".collection-wrapper");
+    const collection = JSON.parse(localStorage.getItem("collection"));
+  
+    collection.forEach((post) => {
+      const projektElement = document.createElement("a");     
+      projektElement.dataset.slug = post.slug;
+      projektElement.innerHTML = `
+        <span>${post.title}</span>
+        <span>${post.parent}</span>
+        <span class="remove-btn">Remove from Collection</span>
+      `;
+      projektElement.href = post.slug;
+      // projektElement.href = slug;
+      projektElement.className = "collection--item";
+      collectionWrapper.append(projektElement);   
+    });
+
+    const allRemoveBtns = document.querySelectorAll(".remove-btn");
+    allRemoveBtns.forEach(btn => {
+      btn.addEventListener("click", (event) => {
+        event.preventDefault(); 
+        const slug = btn.parentElement.dataset.slug;
+        
+        const collection = JSON.parse(localStorage.getItem("collection")) || [];
+        const newCollection = collection.filter((post) => post.slug !== slug);
+
+        localStorage.setItem("collection", JSON.stringify(newCollection));
+
+        btn.parentElement.remove();
+
+        // update fetchThis
+        fetchThis = newCollection.map((collection) => {
+          return [collection.slug, ".content-wrapper"];
+        });
+      })
+    });
+
+    fetchThis = collection.map((collection) => {
+      return [collection.slug, ".content-wrapper"];
+    });
+  }
 });
+
+
+
+
+
+/* FUNCTIONS */
 
 function preparePrintInterface() {
   // 1. Get content

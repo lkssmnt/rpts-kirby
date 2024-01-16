@@ -1,5 +1,13 @@
 <?php snippet("head") ?>
 
+<button
+  id="add-to-collection-btn"
+  data-slug="<?= $page->parent() ?>/<?= $page->slug() ?>"
+  data-title="<?= $page->title() ?>"
+  data-parent="<?= $page->parent() ?>"
+  >Add to Collection
+</button>
+
 <div class="content-wrapper">
   <div class="projekt-wrapper">
     <h1><?= $page->title() ?></h1>
