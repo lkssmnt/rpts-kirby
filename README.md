@@ -24,6 +24,6 @@ This repository is being updated as the course progresses.
 
 1. Create an add-to-collection-button on the detail page (see: projekt.php)
 2. Put project information in data-tags of the button. E.g. data-slug, data-title and everthing else you want to display on the collection page
-3. create collection page in content folder and collection page template (see: collection.php)
+3. create collection page in content folder with collection.txt and collection page template (see: collection.php)
 4. see createAddToCollectionBtn function for button functionality
 5. see createCollection function for displaying the collection, fetching all pages for the print preview and adding remove buttons for each post
