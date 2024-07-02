@@ -1,0 +1,34 @@
+tabs:        
+  content:
+    sections:
+      content:
+        type: fields
+        fields:
+          bilder:
+            type: files
+
+          vimeoids:
+            type: text
+
+          kurs:
+            type: pages
+
+          text:
+            type: writer
+
+          ort:
+            type: text
+
+          teilnehmende:
+            type: pages
+
+          leitung:
+            type: pages
+
+          semester:
+            type: text
+
+  files:
+    sections:
+      files:
+        type: files
