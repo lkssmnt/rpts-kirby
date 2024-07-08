@@ -1,3 +1,4 @@
-<script type="module" src="/assets/js/main.js"></script>
+
+<?= js("assets/js/main.js", ["type" => "module"]) ?>
 </body>
 </html>

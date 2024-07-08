@@ -7,10 +7,13 @@ tabs:
           contentleft:
             type: fields
             fields:
+              test:
+                type: text
+
               bilder:
                 type: files
                 layout: cards
-                size: medium
+                size: small
               
               text:
                 type: writer
@@ -24,28 +27,34 @@ tabs:
             fields:
               autorinnen:
                 type: pages
+                
+              kurse:
+                type: pages
 
               tags:
                 type: tags
 
-              genre:
+              medium:
+                type: tags
+
+              technologie:
                 type: tags
 
               vimeoids:
                 type: text
-
-              kurs:
-                type: pages
               
               supervision:
                 type: pages
               
               semester:
-                type: text
+                type: text                
 
-              istabschlussarbeit:
-                type: toggle
-                text: Ist Abschlussarbeit
+              abschluss:
+                label: Abschlussarbeit
+                type: select
+                options:
+                  bachelor: Bachelor
+                  master: Master
             
   files:
     sections:

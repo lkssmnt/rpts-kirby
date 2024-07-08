@@ -5,8 +5,13 @@
   data-slug="<?= $page->parent() ?>/<?= $page->slug() ?>"
   data-title="<?= $page->title() ?>"
   data-parent="<?= $page->parent() ?>"
-  data-kurs="<?= $page->kurse()->toPages()->first()->slug() ?>"
-  data-image="<?= $page->bilder()->toFiles()->first()->url() ?>"
+  <?php if($page->kurse()->toPages()->first()): ?>
+    data-kurs="<?= $page->kurse()->toPages()->first()->slug() ?>"
+  <?php endif ?>
+
+  <?php if($page->bilder()->toFiles()->first()): ?>
+    data-image="<?= $page->bilder()->toFiles()->first()->url() ?>"
+  <?php endif ?>
   >Add to Collection
 </button>
 

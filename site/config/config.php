@@ -203,6 +203,15 @@ function importPosts($apiURL, $template, $parent) {
           $content[$fieldName] = $field['value'];
           break;
 
+        case 'link':
+          $content[$fieldName] = $field['value']['url'];
+          $content[$fieldName] = str_replace("mailto:", "", $content[$fieldName]);
+          break;
+
+        case 'website':
+          $content[$fieldName] = $field['value'];
+          break;
+
         case 'pages':
           $pageFields = [];
           foreach($field['value'] as $pageField) {
@@ -213,6 +222,21 @@ function importPosts($apiURL, $template, $parent) {
           break;
 
         case 'checkbox':
+          // $values = [];
+          // foreach($field['value'] as $checkbox) {
+          //   switch($checkbox) {
+          //     case 'books':
+          //       $values[] = 'Buch';
+          //       break;
+          //     case 'posters':
+          //       $values[] = 'Plakat';
+          //       break;
+          //     case 'motion_graphics':
+          //       $values[] = 'Flyer';
+          //       break;
+          //   }
+          // }
+
           $content[$fieldName] = implode(",", $field['value']);
           break;
 

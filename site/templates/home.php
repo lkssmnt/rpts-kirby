@@ -8,10 +8,16 @@ $projects = $site->find("projekte")->children();
 
 <p class="author-info"></p>
 
+<div class="filters">
+  <button class="filter-button" data-type="all">Alle</button>
+  <button class="filter-button" data-type="website">Website</button>
+  <button class="filter-button" data-type="bewegt">Bewegt</button>
+</div>
+
 <h2>Projekte:</h2>
-<ul>
+<ul class="projekt-liste">
   <?php foreach ($projects as $project) : ?>
-    <li>
+    <li class="projekt" data-type="<?= $project->medium() ?>">
       <a href="<?= $project->url() ?>">
         <?= $project->title() ?>
       </a>

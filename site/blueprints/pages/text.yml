@@ -1,0 +1,39 @@
+tabs:        
+  content:
+    columns:
+      left:
+        width: 2/3
+        sections:
+          contentleft:
+            type: fields
+            fields:
+
+              text:
+                type: textarea
+
+              fussnoten:
+                type: textarea
+
+
+      right:
+        width: 1/3
+        sections:
+          contentright:
+            type: fields
+            fields:
+              autorinnen:
+                type: pages
+
+              tags:
+                type: tags
+
+              kurse:
+                type: pages
+              
+              workshops:
+                type: pages
+
+  files:
+    sections:
+      files:
+        type: files

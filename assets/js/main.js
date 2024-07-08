@@ -1,6 +1,34 @@
 import { Previewer, Handler } from "../js/paged.esm.js";
 
+const url = document.body.dataset.url;
+
 window.addEventListener("DOMContentLoaded", () => {
+
+  if(document.querySelector(".projekt-liste")) {
+    const projektListe = document.querySelector(".projekt-liste");
+    let filterString = "";
+    
+    const allFilterBtns = document.querySelectorAll(".filter-button");
+    allFilterBtns.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const buttonFilterString = btn.dataset.type;
+        filterString = buttonFilterString;
+
+        const allProjekte = document.querySelectorAll(".projekt");
+        allProjekte.forEach((projekt) => {
+          if (filterString === "all") {
+            projekt.classList.remove("hide");
+          } else if (projekt.dataset.type.toLowerCase() === filterString) {
+            projekt.classList.remove("hide");
+          } else {
+            projekt.classList.add("hide");
+          }
+        });
+      });
+    });
+  }
+
+
   if (document.querySelector("#add-to-collection-btn")) {
     createAddToCollectionBtn("#add-to-collection-btn");
   }
@@ -26,9 +54,8 @@ window.addEventListener("DOMContentLoaded", () => {
       ["lukas/backcover", ".print-wrapper"]
     );
 
-
     document.querySelector("#button-print-preview").addEventListener("click", () => {
-      printPreview(bookContent);
+      printPreview(bookContent);      
     });
 
     document.querySelector("#button-print").addEventListener("click", () => {
@@ -91,7 +118,7 @@ async function printPreview(bookContent) {
   // 3. Render
   previewer.preview(
     content,
-    ["/assets/css/printstyles.css"],
+    [url + "/assets/css/printstyles.css"],
     document.querySelector("#renderbook")
   );
 }
@@ -183,4 +210,8 @@ function createAddToCollectionBtn(selector) {
     // save collection to local storage
     localStorage.setItem("collection", JSON.stringify(collection));
   });
+}
+
+function createPageIndex() {
+  console.log("create page index");
 }

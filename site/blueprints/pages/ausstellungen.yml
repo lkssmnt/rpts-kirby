@@ -1,14 +1,10 @@
-title: Default Page
-
 sections:
   pages:
     type: pages
-    label: Projekte
+    label: Ausstellungen
     search: true
-    template: projekt
+    template: ausstellung
     layout: table
     limit: 50
     columns:
-      autorinnen: true
-        # label: Autor:innen
       kurse: true

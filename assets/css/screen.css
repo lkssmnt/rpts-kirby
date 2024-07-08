@@ -45,6 +45,9 @@ body.print #header-pagedjs{
   display: block;
 } */
 
+.hide {
+  display: none;
+}
 
 
 .collection--item {
